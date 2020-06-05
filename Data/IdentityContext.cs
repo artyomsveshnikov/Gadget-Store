@@ -4,9 +4,10 @@ using SmartphoneShop.Models;
 
 namespace SmartphoneShop.Data
 {
-    public class ApplicationContext : IdentityDbContext<User>
+    // Application context in metanit
+    public class IdentityContext : IdentityDbContext<User>
     {
-        public ApplicationContext(DbContextOptions<ApplicationContext> options)
+        public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
             Database.EnsureCreated();

@@ -28,8 +28,11 @@ namespace SmartphoneShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
+
+            services.AddDbContext<GadgetStoreContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddIdentity<User, IdentityRole>(opts =>
             {
@@ -41,7 +44,7 @@ namespace SmartphoneShop
                 opts.User.RequireUniqueEmail = true;    // уникальный email
                 opts.User.AllowedUserNameCharacters = ".@abcdefghijklmnopqrstuvwxyz"; // допустимые символы
             })
-                .AddEntityFrameworkStores<ApplicationContext>();
+                .AddEntityFrameworkStores<IdentityContext>();
 
             services.AddControllersWithViews();
             services.AddControllersWithViews();
