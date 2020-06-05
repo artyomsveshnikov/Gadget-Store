@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SmartphoneShop.Models;
@@ -20,6 +17,7 @@ namespace SmartphoneShop.Data
         }
 
         public virtual DbSet<Gadget> Gadgets { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,25 +36,40 @@ namespace SmartphoneShop.Data
         {
             modelBuilder.Entity<Gadget>(entity =>
             {
-                entity.HasKey(e => e.GadgetID)
-                    .HasName("actors_pkey");
+                entity.HasKey(e => e.GadgetId)
+                    .HasName("Gadget_pkey");
 
                 entity.ToTable("Gadgets");
 
                 entity.Property(e => e.Name)
-                    .HasColumnName("name")
+                    .HasColumnName("Name")
                     .HasColumnType("character varying");
 
                 entity.Property(e => e.Description)
-                    .HasColumnName("description")
+                    .HasColumnName("Description")
                     .HasColumnType("character varying");
 
                 entity.Property(e => e.Price)
-                    .HasColumnName("price");
+                    .HasColumnName("Price");
 
                 entity.Property(e => e.Image)
-                    .HasColumnName("image")
+                    .HasColumnName("Image")
                     .HasColumnType("character varying");
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.HasKey(e => e.OrderId)
+                    .HasName("order_pkey");
+
+                entity.ToTable("Orders");
+
+                entity.Property(e => e.GadgetId)
+                    .HasColumnName("GadgetId");
+
+                entity.Property(e => e.UserId)
+                    .HasColumnName("UserId")
+                    .HasColumnType("text");
             });
         }
 
