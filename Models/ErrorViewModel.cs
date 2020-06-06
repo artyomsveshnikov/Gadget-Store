@@ -1,5 +1,3 @@
-using System;
-
 namespace SmartphoneShop.Models
 {
     public class ErrorViewModel
