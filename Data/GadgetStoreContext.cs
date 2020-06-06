@@ -16,8 +16,8 @@ namespace SmartphoneShop.Data
         {
         }
 
-        public virtual DbSet<Gadget> Gadgets { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<GadgetModel> Gadgets { get; set; }
+        public virtual DbSet<OrderModel> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,7 +34,7 @@ namespace SmartphoneShop.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Gadget>(entity =>
+            modelBuilder.Entity<GadgetModel>(entity =>
             {
                 entity.HasKey(e => e.GadgetId)
                     .HasName("Gadget_pkey");
@@ -60,8 +60,8 @@ namespace SmartphoneShop.Data
                     .HasColumnType("character varying");
             });
 
-            modelBuilder.Entity<Gadget>().HasData(
-                new Gadget
+            modelBuilder.Entity<GadgetModel>().HasData(
+                new GadgetModel
                 {
                     GadgetId = 1,
                     Name = "ProntoTec 7",
@@ -69,7 +69,7 @@ namespace SmartphoneShop.Data
                     Price = 46.99F,
                     Image = "prontotec.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 2,
                     Name = "Samsung Galaxy",
@@ -77,7 +77,7 @@ namespace SmartphoneShop.Data
                     Price = 120.95F,
                     Image = "samsung-galaxy.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 3,
                     Name = "NeuTab® N7 Pro 7",
@@ -85,7 +85,7 @@ namespace SmartphoneShop.Data
                     Price = 59.99F,
                     Image = "neutab.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 4,
                     Name = "Dragon Touch® Y88X 7",
@@ -93,7 +93,7 @@ namespace SmartphoneShop.Data
                     Price = 54.99F,
                     Image = "dragon-touch.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 5,
                     Name = "Alldaymall A88X 7",
@@ -101,7 +101,7 @@ namespace SmartphoneShop.Data
                     Price = 47.99F,
                     Image = "Alldaymall.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 6,
                     Name = "ASUS MeMO",
@@ -109,7 +109,7 @@ namespace SmartphoneShop.Data
                     Price = 94.99F,
                     Image = "asus-memo.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 7,
                     Name = "ASUS 15.6-Inch",
@@ -117,7 +117,7 @@ namespace SmartphoneShop.Data
                     Price = 249.5F,
                     Image = "asus-latest.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 8,
                     Name = "HP Pavilion 15-r030wm",
@@ -125,7 +125,7 @@ namespace SmartphoneShop.Data
                     Price = 299.95F,
                     Image = "hp-pavilion.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 9,
                     Name = "Dell Inspiron 15.6-Inch",
@@ -133,7 +133,7 @@ namespace SmartphoneShop.Data
                     Price = 308.00F,
                     Image = "dell-inspiron.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 10,
                     Name = "Acer Aspire E Notebook",
@@ -141,7 +141,7 @@ namespace SmartphoneShop.Data
                     Price = 299.95F,
                     Image = "acer-aspire.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 11,
                     Name = "HP Stream 13",
@@ -149,7 +149,7 @@ namespace SmartphoneShop.Data
                     Price = 202.99F,
                     Image = "hp-stream.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 12,
                     Name = "Nokia Lumia 521",
@@ -157,7 +157,7 @@ namespace SmartphoneShop.Data
                     Price = 63.99F,
                     Image = "nokia-lumia.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 13,
                     Name = "HTC Desire 816",
@@ -165,7 +165,7 @@ namespace SmartphoneShop.Data
                     Price = 177.99F,
                     Image = "htc-desire.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 14,
                     Name = "Sanyo Innuendo",
@@ -173,7 +173,7 @@ namespace SmartphoneShop.Data
                     Price = 54.99F,
                     Image = "sanyo-innuendo.jpg"
                 },
-                new Gadget
+                new GadgetModel
                 {
                     GadgetId = 15,
                     Name = "Ulefone N9000",
@@ -184,7 +184,7 @@ namespace SmartphoneShop.Data
 
                 );
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<OrderModel>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
                     .HasName("order_pkey");

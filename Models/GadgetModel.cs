@@ -1,6 +1,6 @@
 ﻿namespace SmartphoneShop.Models
 {
-    public class Gadget
+    public class GadgetModel
     {
         public int GadgetId { get; set; }
         public string Name { get; set; }

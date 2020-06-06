@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using SmartphoneShop.Infrastructure;
 using SmartphoneShop.Models;
 using SmartphoneShop.Repositories;
+using SmartphoneShop.ViewModels;
 
 namespace SmartphoneShop.Services
 {
@@ -9,20 +11,31 @@ namespace SmartphoneShop.Services
     {
         private readonly GadgetRepository _gadgetRepository = new GadgetRepository(new DbFactory());
 
-        public IEnumerable<Gadget> GetAll()
+        public IEnumerable<GadgetModel> GetAll()
         {
             return _gadgetRepository.GetAll();
         }
 
-        public Gadget GetGadget(int id)
+        public GadgetModel GetGadget(int id)
         {
             return _gadgetRepository.GetById(id);
         }
 
-        public void AddGadget(Gadget gadget)
+        public void AddGadget(GadgetModel gadgetModel)
         {
-            _gadgetRepository.Add(gadget);
+            _gadgetRepository.Add(gadgetModel);
             _gadgetRepository.Save();
         }
+
+        public Mapper MapperInit()
+        {
+            var config = new MapperConfiguration(cfg => cfg
+                .CreateMap<GadgetModel, GadgetViewModel>());
+            // create automapper instance
+            var mapper = new Mapper(config);
+            return mapper;
+        }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SmartphoneShop.Models
 {
-    public class Order
+    public class OrderModel
     {
         public int OrderId { get; set; }
         public int GadgetId { get; set; }

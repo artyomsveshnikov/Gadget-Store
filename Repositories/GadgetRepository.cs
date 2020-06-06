@@ -3,7 +3,7 @@ using SmartphoneShop.Models;
 
 namespace SmartphoneShop.Repositories
 {
-    public class GadgetRepository : RepositoryBase<Gadget>
+    public class GadgetRepository : RepositoryBase<GadgetModel>
     {
         public GadgetRepository(IDbFactory dbFactory) : base(dbFactory)
         {
