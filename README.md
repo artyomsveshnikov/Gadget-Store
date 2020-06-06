@@ -15,6 +15,16 @@ ASP NET MVC Core application for simple gadget store which implies CRUD operatio
   - Manage user's roles
   - Add new gadget to store
   - Display list of all users
+  
+### To do list
+
+- Comment on code
+- Seed orders
+- Implement gadget detaiils page
+- Implement Edit in user cart
+- Implement add new gadget with image
+- Move cart to upper menu
+- Do not specify mapper in controller, instead get it from services
 
 ### Architecture
 

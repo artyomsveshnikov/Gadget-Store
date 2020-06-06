@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
-using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartphoneShop.Models;
@@ -13,18 +13,13 @@ namespace SmartphoneShop.Controllers
     {
         private readonly GadgetServices _gadgetServices = new GadgetServices();
         private readonly OrderServices _orderServices = new OrderServices();
-        private readonly Mapper _mapper;
 
-        public StoreController()
-        {
-            _mapper = _gadgetServices.MapperInit();
-        }
 
         [HttpGet]
         public IActionResult GadgetList()
         {
             var gadgets = _gadgetServices.GetAll();
-            var model = _mapper.Map<IEnumerable<GadgetViewModel>>(gadgets);
+            var model = _gadgetServices.MapperInit().Map<IEnumerable<GadgetViewModel>>(gadgets);
             return View(model);
         }
 
@@ -33,7 +28,8 @@ namespace SmartphoneShop.Controllers
         {
             var gadget = _gadgetServices.GetGadget(gadgetId);
             HttpContext.Session.SetInt32("GadgetId", gadgetId);
-            return View(_mapper.Map<GadgetViewModel>(gadget));
+            var model = _gadgetServices.MapperInit().Map<GadgetViewModel>(gadget);
+            return View(model);
         }
 
         [HttpPost]
@@ -61,6 +57,43 @@ namespace SmartphoneShop.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View(_orderServices.GetUserOrders(userId));
+        }
+
+        public IActionResult Details(int gadgetId)
+        {
+            var gadget = _gadgetServices.GetGadget(gadgetId);
+            var model = _gadgetServices.MapperInit().Map<GadgetViewModel>(gadget);
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditCartItem(int orderId)
+        {
+            var order = _orderServices.GetById(orderId);
+            HttpContext.Session.SetInt32("orderId", orderId);
+            var model = _orderServices.MapperInit().Map<OrderViewModel>(order);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditCartItem(IFormCollection collection)
+        {
+            var nullableOrderId = HttpContext.Session.GetInt32("orderId");
+            var orderId = nullableOrderId ?? throw new NullReferenceException("Id cannot be null");
+            var address = collection["Address"].ToString();
+            var phoneNumber = collection["PhoneNumber"].ToString();
+            var orderObj = _orderServices.GetById(orderId);
+            orderObj.Address = address;
+            orderObj.PhoneNumber = phoneNumber;
+            _orderServices.Update(orderObj);
+            _orderServices.Save();
+            return RedirectToAction("UserCart");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteCartItem(int orderId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -30,5 +30,20 @@ namespace SmartphoneShop.Services
             var orders = _orderRepository.GetMany(x => x.UserId == userId);
             return MapperInit().Map<IEnumerable<OrderViewModel>>(orders);
         }
+
+        public OrderModel GetById(int id)
+        {
+            return _orderRepository.GetById(id);
+        }
+
+        public void Save()
+        {
+            _orderRepository.Save();
+        }
+
+        public void Update(OrderModel order)
+        {
+            _orderRepository.Update(order);
+        }
     }
 }

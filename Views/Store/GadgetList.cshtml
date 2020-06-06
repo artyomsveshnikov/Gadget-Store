@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Gadgets</h1>
+<h1>Gadget Store</h1>
 
 <table class="table">
     <thead>
@@ -44,7 +44,7 @@
                 <td>
                     <ul>
                         <li>@Html.ActionLink("Order", "Order", new { gadgetId = item.GadgetId })</li>
-                        <li>@Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})</li>
+                        <li>@Html.ActionLink("Details", "Details", new { gadgetId = item.GadgetId })</li>
                     </ul>
                 </td>
             </tr>

@@ -54,9 +54,10 @@
                     @Html.DisplayFor(modelItem => item.GadgetPrice)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) @*|
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    <ul>
+                        <li>@Html.ActionLink("Edit", "EditCartItem", new { orderId = item.OrderId })</li>
+                        <li>@Html.ActionLink("Cancel Order", "DeleteCartItem", new { orderId = item.OrderId })</li>
+                    </ul>
                 </td>
             </tr>
         }
