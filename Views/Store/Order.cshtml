@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Order</h1>
+<h1>Order phone @Model.Name</h1>
 
-<h4>GadgetViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -23,7 +22,7 @@
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="GadgetId" class="control-label"></label>
                 <input asp-for="GadgetId" class="form-control" />
                 <span asp-validation-for="GadgetId" class="text-danger"></span>
@@ -47,7 +46,7 @@
                 <label asp-for="Image" class="control-label"></label>
                 <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

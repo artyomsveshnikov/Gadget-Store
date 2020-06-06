@@ -46,6 +46,13 @@ namespace SmartphoneShop
             })
                 .AddEntityFrameworkStores<IdentityContext>();
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // We set Time here 
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
             services.AddControllersWithViews();
         }
@@ -67,6 +74,7 @@ namespace SmartphoneShop
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();    // подключение аутентификации
             app.UseAuthorization();
