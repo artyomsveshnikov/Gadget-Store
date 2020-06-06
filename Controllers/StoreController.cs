@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Formatting;
 using SmartphoneShop.Models;
 using SmartphoneShop.Services;
 using SmartphoneShop.ViewModels;
