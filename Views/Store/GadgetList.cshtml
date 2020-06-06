@@ -5,16 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>GadgetList</h1>
+<h1>Gadgets</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GadgetId)
+                @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -25,9 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,7 +30,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GadgetId)
+                    <img src='~/images/@item.Image' />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -48,13 +42,10 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                    <img src='~/images/@item.Image' />
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Order", new { gadgetId = item.GadgetId }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    <ul>
+                        <li>@Html.ActionLink("Order", "Order", new { gadgetId = item.GadgetId })</li>
+                        <li>@Html.ActionLink("Details", "Details", new {/* id=item.PrimaryKey */})</li>
+                    </ul>
                 </td>
             </tr>
         }
