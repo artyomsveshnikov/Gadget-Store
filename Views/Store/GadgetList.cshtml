@@ -49,6 +49,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Image)
+                    <img src='~/images/@item.Image' />
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Order", new { gadgetId = item.GadgetId }) |
