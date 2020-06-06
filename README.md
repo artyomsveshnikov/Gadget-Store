@@ -11,6 +11,7 @@ ASP NET MVC Core application for simple gadget store which implies CRUD operatio
   - Add gadget to user's cart
   - Display list of gadgets in user cart
   - Edit items in user's cart
+  - Delete items in user's cart
 - Administrator
   - Manage user's roles
   - Add new gadget to store

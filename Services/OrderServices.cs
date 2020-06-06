@@ -45,5 +45,10 @@ namespace SmartphoneShop.Services
         {
             _orderRepository.Update(order);
         }
+
+        public void Delete(OrderModel order)
+        {
+            _orderRepository.Delete(order);
+        }
     }
 }

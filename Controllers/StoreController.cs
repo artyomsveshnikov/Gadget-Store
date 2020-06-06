@@ -93,7 +93,21 @@ namespace SmartphoneShop.Controllers
         [HttpGet]
         public IActionResult DeleteCartItem(int orderId)
         {
-            throw new NotImplementedException();
+            var order = _orderServices.GetById(orderId);
+            HttpContext.Session.SetInt32("DeleteOrderId", orderId);
+            var model = _orderServices.MapperInit().Map<OrderViewModel>(order);
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteCartItem()
+        {
+            var nullableId = HttpContext.Session.GetInt32("DeleteOrderId");
+            var orderId = nullableId ?? throw new NullReferenceException("Id cannot be null");
+            var order = _orderServices.GetById(orderId);
+            _orderServices.Delete(order);
+            _orderServices.Save();
+            return RedirectToAction("UserCart");
         }
     }
 }
