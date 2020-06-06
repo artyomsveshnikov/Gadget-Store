@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmartphoneShop.Data;
@@ -9,9 +10,10 @@ using SmartphoneShop.Data;
 namespace SmartphoneShop.Migrations
 {
     [DbContext(typeof(GadgetStoreContext))]
-    partial class GadgetStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20200606231122_OrderSeedMigration")]
+    partial class OrderSeedMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
