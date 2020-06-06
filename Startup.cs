@@ -29,10 +29,10 @@ namespace SmartphoneShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<IdentityContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("StoreConnection")));
 
             services.AddDbContext<GadgetStoreContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("StoreConnection")));
 
             services.AddIdentity<User, IdentityRole>(opts =>
             {

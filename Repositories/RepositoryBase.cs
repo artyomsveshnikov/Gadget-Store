@@ -11,12 +11,12 @@ namespace SmartphoneShop.Repositories
     public class RepositoryBase<T> : IRepository<T> where T : class
     {
 
-        private GadgetStoreContext _rentalContext;
+        private GadgetStoreContext _storeContext;
         private readonly DbSet<T> _dbSet;
 
         protected IDbFactory DbFactory { get; }
 
-        protected GadgetStoreContext DbContext => _rentalContext ??= DbFactory.Init();
+        protected GadgetStoreContext DbContext => _storeContext ??= DbFactory.Init();
 
         public RepositoryBase(IDbFactory dbFactory)
         {
@@ -33,7 +33,7 @@ namespace SmartphoneShop.Repositories
         public virtual void Update(T entity)
         {
             _dbSet.Attach(entity);
-            _rentalContext.Entry(entity).State = EntityState.Modified;
+            _storeContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(T entity)
@@ -74,7 +74,7 @@ namespace SmartphoneShop.Repositories
 
         public void Save()
         {
-            _rentalContext.SaveChanges();
+            _storeContext.SaveChanges();
         }
     }
 }

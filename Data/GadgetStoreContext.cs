@@ -28,7 +28,7 @@ namespace SmartphoneShop.Data
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql(configuration.GetConnectionString("RentalsConnection"));
+                optionsBuilder.UseNpgsql(configuration.GetConnectionString("StoreConnection"));
             }
         }
 
@@ -197,6 +197,16 @@ namespace SmartphoneShop.Data
                 entity.Property(e => e.UserId)
                     .HasColumnName("UserId")
                     .HasColumnType("text");
+
+                entity.Property(e => e.Address)
+                    .HasColumnName("Address")
+                    .HasColumnType("character varying");
+
+                entity.Property(e => e.PhoneNumber)
+                    .HasColumnName("PhoneNumber")
+                    .HasColumnType("character varying");
+
+
             });
         }
 

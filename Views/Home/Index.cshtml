@@ -7,7 +7,7 @@
 {
     <p>@User.Identity.Name</p>
 
-    @Html.ActionLink("Каталог товаров", "");
+    @Html.ActionLink("Каталог товаров", "GadgetList", "Store");
 
     <form method="post" asp-controller="Account" asp-action="Logout">
         <input type="submit" value="Выход" />
