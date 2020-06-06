@@ -6,8 +6,10 @@
 @if (User.Identity.IsAuthenticated)
 {
     <p>@User.Identity.Name</p>
-
-    @Html.ActionLink("Каталог товаров", "GadgetList", "Store");
+    <ul>
+        <li>@Html.ActionLink("Каталог товаров", "GadgetList", "Store");</li>
+        <li>@Html.ActionLink("Корзина", "UserCart", "Store");</li>
+    </ul>
 
     <form method="post" asp-controller="Account" asp-action="Logout">
         <input type="submit" value="Выход" />

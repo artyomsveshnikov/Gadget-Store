@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +9,7 @@ namespace SmartphoneShop.Controllers
 {
     public class UsersController : Controller
     {
-        UserManager<User> _userManager;
+        private readonly UserManager<User> _userManager;
  
         public UsersController(UserManager<User> userManager)
         {
@@ -123,7 +121,7 @@ namespace SmartphoneShop.Controllers
                         HttpContext.RequestServices.GetService(typeof(IPasswordHasher<User>)) as IPasswordHasher<User>;
      
                     IdentityResult result = 
-                        await _passwordValidator.ValidateAsync(_userManager, user, model.NewPassword);
+                        await _passwordValidator?.ValidateAsync(_userManager, user, model.NewPassword);
                     if(result.Succeeded)
                     {
                         user.PasswordHash = _passwordHasher.HashPassword(user, model.NewPassword);

@@ -57,5 +57,12 @@ namespace SmartphoneShop.Controllers
 
             return RedirectToAction("GadgetList", "Store");
         }
+
+        [HttpGet]
+        public IActionResult UserCart()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return View(_orderServices.GetUserOrders(userId));
+        }
     }
 }
