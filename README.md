@@ -16,6 +16,8 @@ ASP NET MVC Core application for simple gadget store which implies CRUD operatio
   - Manage user's roles
   - Add new gadget to store
   - Display list of all users
+  - Edit user
+  - Delete user
   
 ### To do list
 
